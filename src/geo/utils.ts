@@ -16,11 +16,9 @@ export abstract class Utils {
     const Φ2 = this.degToRad(lat2);
     const λ1 = this.degToRad(lng1);
     const λ2 = this.degToRad(lng2);
-    const Δλ = Math.abs(λ1 - λ2);
     const ΔΦ = Math.abs(Φ1 - Φ2);
-    const sinLat = Math.sin(ΔΦ / 2);
-    const sinLng = Math.sin(Δλ / 2);
-    const α = (sinLat * sinLat) + (Math.cos(Φ1) * Math.cos(Φ2) * sinLng * sinLng);
+    const Δλ = Math.abs(λ1 - λ2);
+    const α = Math.pow(Math.sin(ΔΦ / 2), 2) + (Math.cos(Φ1) * Math.cos(Φ2) * Math.pow(Math.sin(Δλ / 2), 2));
     const c = 2 * Math.asin(Math.min(1, Math.sqrt(α)));
     return c * R;
   }
