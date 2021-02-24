@@ -1,7 +1,15 @@
+import { Point } from '../src/geo/point';
 import { Utils } from '../src/geo/utils';
 
 describe('Utils', () => {
   const error = (a: number, b: number): number => Math.abs(a - b);
+
+  it('pointToLineDistance', () => {
+    expect(error(Utils.pointToLineDistance(new Point(10, 0), new Point(0, 100), new Point(0, 1)), 10)).toBeLessThan(0.0001);
+    expect(error(Utils.pointToLineDistance(new Point(0, 10), new Point(1000, 0.001), new Point(-100, 0)), 9.9999090909)).toBeLessThan(0.0001);
+    expect(error(Utils.pointToLineDistance(new Point(0, 0), new Point(0, 10), new Point(10, 0)), 7.07106781187)).toBeLessThan(0.0001);
+    expect(error(Utils.pointToLineDistance(new Point(0, 0), new Point(10, 10), new Point(10, 10)), 14.1421356237)).toBeLessThan(0.0001);
+  });
 
   it('sphericalDistance', () => {
     const valencia = [39.467705, -0.378632];
