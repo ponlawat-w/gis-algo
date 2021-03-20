@@ -26,7 +26,7 @@ export abstract class Utils {
   }
 
   /**
-   * Calculate the great circile between given coordinates
+   * Calculate the great circle between given coordinates
    * @param lat1 Point1 Latitude
    * @param lng1 Point1 Longitude
    * @param lat2 Point2 Latitunde
