@@ -1,14 +1,13 @@
 import { Point } from '../src/geo/point';
 import { Utils } from '../src/geo/utils';
+import { diff } from './functions/diff';
 
 describe('Utils', () => {
-  const error = (a: number, b: number): number => Math.abs(a - b);
-
   it('pointToLineDistance', () => {
-    expect(error(Utils.pointToLineDistance(new Point(10, 0), new Point(0, 100), new Point(0, 1)), 10)).toBeLessThan(0.0001);
-    expect(error(Utils.pointToLineDistance(new Point(0, 10), new Point(1000, 0.001), new Point(-100, 0)), 9.9999090909)).toBeLessThan(0.0001);
-    expect(error(Utils.pointToLineDistance(new Point(0, 0), new Point(0, 10), new Point(10, 0)), 7.07106781187)).toBeLessThan(0.0001);
-    expect(error(Utils.pointToLineDistance(new Point(0, 0), new Point(10, 10), new Point(10, 10)), 14.1421356237)).toBeLessThan(0.0001);
+    expect(diff(Utils.pointToLineDistance(new Point(10, 0), new Point(0, 100), new Point(0, 1)), 10)).toBeLessThan(0.0001);
+    expect(diff(Utils.pointToLineDistance(new Point(0, 10), new Point(1000, 0.001), new Point(-100, 0)), 9.9999090909)).toBeLessThan(0.0001);
+    expect(diff(Utils.pointToLineDistance(new Point(0, 0), new Point(0, 10), new Point(10, 0)), 7.07106781187)).toBeLessThan(0.0001);
+    expect(diff(Utils.pointToLineDistance(new Point(0, 0), new Point(10, 10), new Point(10, 10)), 14.1421356237)).toBeLessThan(0.0001);
   });
 
   it('sphericalDistance', () => {
@@ -24,10 +23,10 @@ describe('Utils', () => {
     const distanceAukLim = Utils.sphericalDistance(auckland[0], auckland[1], lima[0], lima[1]);
     const distanceLimVlc = Utils.sphericalDistance(lima[0], lima[1], valencia[0], valencia[1]);
 
-    expect(error(distanceVlcCmg, 9460)).toBeLessThan(2);
-    expect(error(distanceCmgTok, 4407)).toBeLessThan(2);
-    expect(error(distanceTokAuk, 8838)).toBeLessThan(2);
-    expect(error(distanceAukLim, 10770)).toBeLessThan(2);
-    expect(error(distanceLimVlc, 9740)).toBeLessThan(2);
+    expect(diff(distanceVlcCmg, 9460)).toBeLessThan(2);
+    expect(diff(distanceCmgTok, 4407)).toBeLessThan(2);
+    expect(diff(distanceTokAuk, 8838)).toBeLessThan(2);
+    expect(diff(distanceAukLim, 10770)).toBeLessThan(2);
+    expect(diff(distanceLimVlc, 9740)).toBeLessThan(2);
   });
 });
