@@ -71,4 +71,20 @@ describe('Point', () => {
     expect(p0.distanceTo(p1)).toEqual(1);
     expect(p0.distanceTo(p2)).toEqual(Math.sqrt(2));
   });
+
+  it('clone', () => {
+    const p1 = new Point(1, 1);
+    const p2 = p1.clone();
+    expect(p1 === p2).toBeFalsy();
+    expect(p1.equal(p2)).toBeTruthy();
+  });
+
+  it('fromNumberArray', () => {
+    const coors = [[0, 0], [0, 1], [1, 0], [1, 1]];
+    const points = [new Point(0, 0), new Point(0, 1), new Point(1, 0), new Point(1, 1)];
+    const results = Point.fromNumberArray(coors);
+    for (let i = 0; i < points.length; i++) {
+      expect(points[i].equal(results[i])).toBeTruthy();
+    }
+  });
 });

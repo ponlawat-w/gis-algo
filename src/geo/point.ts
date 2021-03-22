@@ -45,4 +45,12 @@ export class Point {
   public distanceTo(p: Point): number {
     return Math.sqrt(Math.pow(this.x - p.x, 2) + Math.pow(this.y - p.y, 2));
   }
+
+  public clone(): Point {
+    return new Point(this.x, this.y);
+  }
+
+  public static fromNumberArray(coordinates: number[][]): Point[] {
+    return coordinates.map(cs => new Point(cs[0], cs[1]));
+  }
 }
