@@ -29,4 +29,15 @@ describe('Utils', () => {
     expect(diff(distanceAukLim, 10770)).toBeLessThan(2);
     expect(diff(distanceLimVlc, 9740)).toBeLessThan(2);
   });
+
+  it('sideOfLine', () => {
+    let p = new Point(1, 1);
+    const p1 = new Point(0, 0);
+    const p2 = new Point(1, 0);
+    expect(Utils.sideOfLine(p, p1, p2)).toEqual(-1);
+    expect(Utils.sideOfLine(p, p2, p1)).toEqual(1);
+    p = new Point(0.5, 0);
+    expect(Utils.sideOfLine(p, p1, p2)).toEqual(0);
+    expect(Utils.sideOfLine(p, p2, p1)).toEqual(0);
+  });
 });

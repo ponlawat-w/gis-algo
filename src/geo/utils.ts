@@ -45,4 +45,14 @@ export abstract class Utils {
     const c = 2 * Math.asin(Math.min(1, Math.sqrt(α)));
     return c * R;
   }
+
+  /**
+   * Calculate the side of the point to the vector
+   * @param point the point
+   * @param linePoint1 the start point of the line
+   * @param linePoint2 the end point of the line
+   */
+  public static sideOfLine(point: Point, linePoint1: Point, linePoint2: Point): number {
+    return Math.trunc(((point.x - linePoint1.x) * (linePoint2.y - linePoint1.y)) - ((linePoint2.x - linePoint1.x) * (point.y - linePoint1.y)));
+  }
 }
